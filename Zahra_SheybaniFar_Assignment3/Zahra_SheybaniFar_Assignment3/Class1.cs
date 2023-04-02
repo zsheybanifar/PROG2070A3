@@ -223,6 +223,74 @@ public class ZeroaccidentaTest1Test
         }
     }
 
+    [Test]
+    public void zeroaccidents_Test10()
+    {
+        driver.Navigate().GoToUrl("http://localhost/prog2070a03/prog2070a03/getQuote.html");
+        driver.FindElement(By.Id("firstName")).Click();
+        driver.FindElement(By.Id("firstName")).SendKeys("Zahra");
+        driver.FindElement(By.Id("lastName")).SendKeys("Sheybani Far");
+        driver.FindElement(By.Id("address")).SendKeys("260 Oston Bridge ");
+        driver.FindElement(By.Id("city")).SendKeys("Waterloo");
+        driver.FindElement(By.Id("postalCode")).SendKeys("M4H 6Y8");
+        driver.FindElement(By.Id("phone")).SendKeys("456-789-1230");
+        driver.FindElement(By.Id("email")).SendKeys("zahrasheybanifar8@gmail.com");
+        driver.FindElement(By.Id("age")).SendKeys("55");
+        driver.FindElement(By.Id("experience")).SendKeys("2");
+        driver.FindElement(By.Id("accidents")).SendKeys("4");
+        driver.FindElement(By.Id("btnSubmit")).Click();
+        {
+            string value = driver.FindElement(By.Id("finalQuote")).GetAttribute("value");
+            Assert.That(value, Is.EqualTo("No Insurance for you!!  Too many accidents - go take a course!"));
 
-    
+        }
+
+    }
+
+    [Test]
+    public void oneaccidents_Test11()
+    {
+        driver.Navigate().GoToUrl("http://localhost/prog2070a03/prog2070a03/getQuote.html");
+        driver.FindElement(By.Id("firstName")).Click();
+        driver.FindElement(By.Id("firstName")).SendKeys("Zahra");
+        driver.FindElement(By.Id("lastName")).SendKeys("Sheybani Far");
+        driver.FindElement(By.Id("address")).SendKeys("260 Oston Bridge ");
+        driver.FindElement(By.Id("city")).SendKeys("Waterloo");
+        driver.FindElement(By.Id("postalCode")).SendKeys("M4H 6Y8");
+        driver.FindElement(By.Id("phone")).SendKeys("456-789-1230");
+        driver.FindElement(By.Id("email")).SendKeys("zahrasheybanifar8@gmail.com");
+        driver.FindElement(By.Id("age")).SendKeys("58");
+        driver.FindElement(By.Id("experience")).SendKeys("11");
+        driver.FindElement(By.Id("accidents")).SendKeys("1");
+        driver.FindElement(By.Id("btnSubmit")).Click();
+        {
+            string value = driver.FindElement(By.Id("finalQuote")).GetAttribute("value");
+            Assert.That(value, Is.EqualTo("$1350"));
+
+
+        }
+    }
+    [Test]
+    public void experienceomitted_Test12()
+    {
+        driver.Navigate().GoToUrl("http://localhost/prog2070a03/prog2070a03/getQuote.html");
+        driver.FindElement(By.Id("firstName")).Click();
+        driver.FindElement(By.Id("firstName")).SendKeys("Zahra");
+        driver.FindElement(By.Id("lastName")).SendKeys("Sheybani Far");
+        driver.FindElement(By.Id("address")).SendKeys("260 Oston Bridge ");
+        driver.FindElement(By.Id("city")).SendKeys("Waterloo");
+        driver.FindElement(By.Id("postalCode")).SendKeys("M4H 6Y8");
+        driver.FindElement(By.Id("phone")).SendKeys("456-789-1230");
+        driver.FindElement(By.Id("email")).SendKeys("zahrasheybanifar8@gmail.com");
+        driver.FindElement(By.Id("age")).SendKeys("33");
+        driver.FindElement(By.Id("accidents")).SendKeys("0");
+        driver.FindElement(By.Id("btnSubmit")).Click();
+        {
+            string value = driver.FindElement(By.Id("experience")).GetAttribute("value");
+            Assert.That(value, Is.EqualTo(string.Empty));
+        }
+    }
+
+
+
 }
